@@ -26,11 +26,11 @@ const navData = [
         list: ['partners', 'partners', 'partners']
       },
       {
-        title: '资源2',
+        title: 'assets',
         list: ['partners', 'partners', 'partners']
       },
       {
-        title: '资源3',
+        title: 'assets',
         list: ['partners', 'partners', 'partners']
       }
     ]
@@ -201,7 +201,6 @@ function Header({ langJson,themeMode, changeMode,changeLang }: HeaderProp) {
                 </svg>
               </div>
             ))}
-            <div></div>
           </div>
         </div>
         <div className="header-switch-theme" onClick={handleThemeModeChange}>
@@ -271,7 +270,7 @@ function Header({ langJson,themeMode, changeMode,changeLang }: HeaderProp) {
                     onClick={() => openList(v.id)}
                   >
                     <div className="header-modal-nav-cont">
-                      <span>{v.title}</span>
+                      <span>{langJson[v.title]}</span>
                       <svg
                         width={15}
                         height={15}
@@ -289,16 +288,16 @@ function Header({ langJson,themeMode, changeMode,changeLang }: HeaderProp) {
                         {v.list.map((v2: any, i2: number) =>
                           v2.list?.length > 0 ? (
                             <div key={i2}>
-                              <div className="pad f12 color">{v2.title}</div>
+                              <div className="pad f12 color">{langJson[v2.title]}</div>
                               {v2.list.map((v3: string, i3: number) => (
                                 <div className="pad1 f13" key={i3}>
-                                  {v3}
+                                  {langJson[v3]}
                                 </div>
                               ))}
                             </div>
                           ) : (
                             <div className="pad1 f13" key={i2}>
-                              {v2}
+                              {langJson[v2]}
                             </div>
                           )
                         )}
@@ -307,14 +306,32 @@ function Header({ langJson,themeMode, changeMode,changeLang }: HeaderProp) {
                   </div>
                 ) : (
                   <div className="header-modal-nav bb" key={i}>
-                    {v.title}
+                    {langJson[v.title]}
                   </div>
                 )
               )}
             </div>
-
+            
+            <div className='header-modal-lang'>
+              {langData.map((v) => (
+                <div key={v.value} onClick={()=> changeLang(v.value as LangMode)}>
+                  <span>{v.label}</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    stroke="currentColor"
+                    fill="currentColor"
+                    height="24px"
+                    viewBox="0 0 24 24"
+                    width="24px"
+                  >
+                    <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
+                  </svg>
+                </div>
+              ))}
+            </div>
+            
             <div className="header-modal-theme-cont">
-              <span>外观</span>
+              <span>{langJson['appearance']}</span>
               <div
                 className="header-switch-theme"
                 onClick={handleThemeModeChange}

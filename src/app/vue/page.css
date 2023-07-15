@@ -485,6 +485,23 @@
   .active {
     transform: rotate(45deg);
   }
+
+  .header-modal-lang {
+    padding: 12px 14px 12px 16px;
+    margin-top: 20px;
+    background-color: var(--vt-c-bg-mute);
+    border-radius: 8px;
+  }
+  .header-modal-lang>div {
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+  }
+  .header-modal-lang>div svg {
+    margin-left: 6px;
+    width: 12px;
+    color: rgba(var(--foreground-color-rgba1));
+  }
   .header-modal-theme-cont {
     margin-top: 20px;
     display: flex;
