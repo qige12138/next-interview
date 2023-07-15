@@ -1,8 +1,14 @@
+'use client';
 import React from 'react'
 
+ 
+
 function Desc() {
+  
   return (
     <div className='desc'>
+      
+      {/* <div>{dict.products.cart}</div> */}
       <div className="desc-cont bb">
         <p className="desc-t desc-t1">渐进式</p>
         <p className="desc-t desc-t2">JavaScript 框架</p>

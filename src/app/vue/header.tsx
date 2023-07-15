@@ -1,46 +1,60 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { ColorSchemeMode } from './page'
+import { ColorSchemeMode, LangMode } from './page'
 
 /**导航菜单数据 */
 const navData = [
   {
-    title: '文档',
+    title: 'doc',
     id: 1,
-    list: ['深度指南', '深度指南', '深度指南']
+    list: ['guide', 'guide', 'guide']
   },
   {
     title: 'API',
     id: 2
   },
   {
-    title: '演武场',
+    title: 'playground',
     id: 3
   },
   {
-    title: '生态系统',
+    title: 'ecosystem',
     id: 4,
     list: [
       {
-        title: '资源1',
-        list: ['合作伙伴', '合作伙伴', '合作伙伴']
+        title: 'assets',
+        list: ['partners', 'partners', 'partners']
       },
       {
         title: '资源2',
-        list: ['合作伙伴', '合作伙伴', '合作伙伴']
+        list: ['partners', 'partners', 'partners']
       },
       {
         title: '资源3',
-        list: ['合作伙伴', '合作伙伴', '合作伙伴']
+        list: ['partners', 'partners', 'partners']
       }
     ]
   }
 ]
+
+const langData = [
+  {
+    label: '中文',
+    value: 'ch'
+  },
+  {
+    label: 'English',
+    value: 'en'
+  }
+]
+
 type HeaderProp = {
+  langJson:Record<string,any>
   themeMode: ColorSchemeMode | null
   changeMode: (mode: ColorSchemeMode) => void
+  changeLang: (lang: LangMode) => void
 }
-function Header({ themeMode, changeMode }: HeaderProp) {
+function Header({ langJson,themeMode, changeMode,changeLang }: HeaderProp) {
   const [isModal, setIsModal] = useState(false)
   const [openIds, setOpenIds] = useState<number[]>([])
   const handleThemeModeChange = () => {
@@ -62,10 +76,11 @@ function Header({ themeMode, changeMode }: HeaderProp) {
     }
   }
 
+
   const watchWindowWidth = () => {
-    const clientWidth = document.documentElement.clientWidth;
-    if(clientWidth > 768) {
-      setIsModal(false);
+    const clientWidth = document.documentElement.clientWidth
+    if (clientWidth > 768) {
+      setIsModal(false)
     }
   }
   useEffect(() => {
@@ -74,9 +89,9 @@ function Header({ themeMode, changeMode }: HeaderProp) {
     } else {
       document.querySelector('html')?.classList.remove('over-h')
     }
-    window.addEventListener('resize',watchWindowWidth)
+    window.addEventListener('resize', watchWindowWidth)
     return () => {
-      window.removeEventListener('resize',watchWindowWidth);
+      window.removeEventListener('resize', watchWindowWidth)
     }
   }, [isModal])
   return (
@@ -111,7 +126,7 @@ function Header({ themeMode, changeMode }: HeaderProp) {
               strokeLinejoin="round"
             ></path>
           </svg>
-          <span className="header-t">搜索</span>
+          <span className="header-t">{langJson['search']}</span>
           <div className="header-b">⌘ K</div>
         </div>
       </div>
@@ -120,10 +135,10 @@ function Header({ themeMode, changeMode }: HeaderProp) {
           {navData.map((v: Record<string, any>) => (
             <div key={v.id} className="header-nav-tab">
               {!v.list ? (
-                v.title
+                langJson[v.title]
               ) : (
                 <div className="header-tab-t">
-                  <div>{v.title}</div>
+                  <div>{langJson[v.title]}</div>
                   <div className="header-icon">
                     <svg
                       stroke="currentColor"
@@ -144,13 +159,13 @@ function Header({ themeMode, changeMode }: HeaderProp) {
                         v2?.list ? (
                           /** 为了演示  暂用index当key */
                           <div key={i1}>
-                            <div className="header-list-title">{v2.title}</div>
+                            <div className="header-list-title">{langJson[v2.title]}</div>
                             {v2.list.map((v3: string, i2: number) => (
-                              <div key={i2}>{v3}</div>
+                              <div key={i2}>{langJson[v3]}</div>
                             ))}
                           </div>
                         ) : (
-                          <div key={i1}>{v2}</div>
+                          <div key={i1}>{langJson[v2]}</div>
                         )
                     )}
                   </div>
@@ -158,6 +173,36 @@ function Header({ themeMode, changeMode }: HeaderProp) {
               )}
             </div>
           ))}
+        </div>
+        <div className="header-la">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            stroke="currentColor"
+            fill="currentColor"
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path d=" M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z "></path>
+          </svg>
+          <div className="header-lang-list">
+            {langData.map((v) => (
+              <div key={v.value} onClick={()=> changeLang(v.value as LangMode)}>
+                <span>{v.label}</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke="currentColor"
+                  fill="currentColor"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  width="24px"
+                >
+                  <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"></path>
+                </svg>
+              </div>
+            ))}
+            <div></div>
+          </div>
         </div>
         <div className="header-switch-theme" onClick={handleThemeModeChange}>
           <div>
