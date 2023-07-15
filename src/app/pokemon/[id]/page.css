@@ -1,0 +1,13 @@
+
+.detail {
+  width: 300px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+}
+.detail img {
+  width: 300px;
+}
+.detail>div {
+  padding-top: 10px;
+}
