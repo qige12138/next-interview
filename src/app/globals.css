@@ -1,44 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root,
-:root[theme="light"] {
-  --foreground-rgb: 0, 0, 0;
-  --foreground-rgba: 0, 0, 0,0.2;
-  --foreground-color-rgba1: 0, 0, 0,0.4;
-  --foreground-color-rgba: 0, 0, 0,0.7;
-  --background-color: #fff;
-  --vt-c-bg-mute:#f1f1f1;
-  --switch-theme-bg:#fff;
-  --switch-theme-left:0;
-  --button-color-l:#fff;
-  --button-color-r:#476582;
-  --sponsors-img-hover-bg:#f1f1f1;
-}
-
-:root[theme="dark"] {
-  --foreground-rgb: 255, 255, 255;
-  --foreground-rgba: 255, 255, 255,0.2;
-  --foreground-color-rgba1: 255, 255, 255,0.4;
-  --foreground-color-rgba: 255, 255, 255,0.7;
-  --background-color: #1a1a1a;
-  --vt-c-bg-mute:#2f2f2f;
-  --switch-theme-bg:#000;
-  --switch-theme-left:20px;
-  --button-color-l:#213547;
-  --button-color-r:#aac8e4;
-  --sponsors-img-hover-bg:#fff;
-}
+@import './theme/fontFamily.css';
+@import './theme/base.css';
+@import './theme/components.css';
+@import './theme/utilities.css';
 
 
-
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background-color: var(--background-color);
-}
-
-.over-h {
-  overflow: hidden;
-}

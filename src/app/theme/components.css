@@ -1,0 +1,15 @@
+@tailwind components;
+@layer components {
+  .badges-information {
+    @apply w-[69px] h-[69px] rounded-[50%] bg-rounded1;
+  }
+  .base-btn {
+    @apply w-[145px] h-[40px] flex items-center justify-center text-[14px] rounded-[12px] cursor-pointer text-center;
+  }
+  .base-btn-bg {
+    @apply base-btn bg-gradient-radial;
+  }
+  .quest-box>.content {
+    @apply flex items-center justify-center w-[122px] h-[122px] border-[0.5px] border-quests-box rounded-[50%] leading-[15px] text-[14px];
+  }
+}

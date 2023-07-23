@@ -1,0 +1,53 @@
+@tailwind base;
+@layer base {
+  :root {
+    --base-font-color: #ededed;
+    --base-bg-color: #010101;
+    --solid-color: #fff;
+    --box-bg-color: #101010;
+    --round-bg-color: #d9d9d9;
+    --round-bg-color-d: #444;
+    --undertone-color: #828282;
+    --undertone-color-d: #7d7d7d;
+    --badges-btn-bg-l: #353535;
+    --badges-btn-bg-r: #2e2e2e;
+    --quests-svg-color: #1c1c1c;
+    --quests-svg-color-d: #232323;
+    --quests-circle-color: #5c5c5c;
+    --quest-btn-color: #6f6f6f;
+    --quest-btn-color-d: #000;
+    --quest-btn-bg-color: rgba(10, 10, 10, 0.4);
+    --quest-btn-bg-color-d: #404040;
+    --quest-box-hover-color: #030303;
+    --tab-color: #b2b2b2;
+    --tab-border-color: #282828;
+    --tab-border-active-color: #fefefe;
+    --tab-data-bg-color: #202020;
+    --tab-data-svg-color: #292929;
+    --schedule-bg-color: #505050;
+    --schedule-bg-active-color: #f2f2f2;
+    --tab-shadow-t-color: rgba(16, 16, 16, 0);
+  }
+
+  * {
+    @apply box-border;
+  }
+  html,
+  body {
+    @apply w-full h-full;
+  }
+
+  body {
+    @apply text-basics bg-basics text-[14px] font-body;
+  }
+
+  .flex-col-center {
+    @apply flex flex-col items-center;
+  }
+  .flex-row-center {
+    @apply flex flex-row items-center;
+  }
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}

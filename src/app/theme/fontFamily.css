@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Next book';
+  font-style: normal;
+  font-weight: 400;
+  src:url('/fonts/NEXT-otf/NEXT-Book-Thin.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Next book';
+  font-style: normal;
+  font-weight: 700;
+  src:url('/fonts/NEXT-otf/NEXT-Book-Bold.otf') format('opentype');
+}
+

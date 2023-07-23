@@ -1,7 +1,0 @@
-.home {
-  display: flex;
-}
-.home>div {
-  margin-left: 30px;
-  cursor: pointer;
-}
