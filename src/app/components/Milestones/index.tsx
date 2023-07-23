@@ -89,7 +89,7 @@ function Milestones() {
       heightInfo[id] = h
     })
     setTypeIdHeight(heightInfo)
-    ;(milestonesRef.current as HTMLDivElement).onscrollend = () => {
+    ;(milestonesRef.current as any).onscrollend = () => {
       isClickScroll.current = false
     }
   }, [])
